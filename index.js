@@ -8,6 +8,7 @@ import {
   ButtonStyleTypes,
 } from 'discord-interactions';
 import { VerifyDiscordRequest, getRandomEmoji, DiscordRequest } from './utils.js';
+import { AskCluadeAPi } from './claude2.js'
 
 // Create an express app
 const app = express();
@@ -37,7 +38,7 @@ app.post('/interactions', async function(req, res) {
    */
   if (type === InteractionType.APPLICATION_COMMAND) {
     const { name } = data;
-
+    let answer = await AskCluadeAPi("你好")
     // "test" command
     if (name === 'test') {
       // Send a message into the channel where command was triggered from
@@ -45,7 +46,8 @@ app.post('/interactions', async function(req, res) {
         type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
         data: {
           // Fetches a random emoji to send from a helper function
-          content: 'hello world ' + getRandomEmoji(),
+        //   content: 'hello world ' + getRandomEmoji(),
+        content: answer.res.completion
         },
       });
     }

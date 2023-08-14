@@ -12,6 +12,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "claude-ai": "^1.2.2",
     "discord-interactions": "^3.4.0",
     "discord.js": "^14.12.1",
     "dotenv": "^16.3.1",
