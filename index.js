@@ -19,10 +19,11 @@ app.use(express.json({ verify: VerifyDiscordRequest(process.env.PUBLIC_KEY) }));
 /**
  * Interactions endpoint URL where Discord will send HTTP requests
  */
-app.post('/interactions', async function (req, res) {
+app.post('/interactions', async function(req, res) {
   // Interaction type and data
   const { type, id, data } = req.body;
-
+  console.log("请求体：")
+  console.log(req.body)
   /**
    * Handle verification requests
    */
